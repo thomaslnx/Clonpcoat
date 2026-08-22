@@ -1,0 +1,13 @@
+[workspace]
+resolver="2"
+members = [
+  "crates/clonpcoat",
+  "examples/hello-world"
+]
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+
+[workspace.dependencies]
+# Clonpcoat crates
+clonpcoat = { path = "crates/clonpcoat"}
