@@ -1,3 +1,10 @@
 fn main() {
-    println!("Hello, world! {}", clonpcoat::add(5, 6));
+    clonpcoat::view! {
+        html {
+            head {
+                title { "pip" }
+            }
+        }
+    }
+    println!("Hello, world!");
 }
