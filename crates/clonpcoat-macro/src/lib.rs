@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-use clonpcoat_view::token::{Span, Token, TokenKind};
+use clonpcoat_view::parse::{Parser, Span, Token, TokenKind};
 use proc_macro::{Delimiter, TokenStream, TokenTree};
 use quote::quote;
 
@@ -60,12 +60,14 @@ pub fn view(tokens: TokenStream) -> TokenStream {
     }
 
     let mut converter = Convert { result: Vec::new() };
-    match converter.convert(tokens) {
-        Ok(()) => {}
+    let tokens = match converter.convert(tokens) {
+        Ok(()) => converter.result,
         Err(err) => return err,
     };
 
-    let debug = format!("{:?}", converter.result);
+    let cst = Parser::new(&tokens).parse_root();
+
+    let debug = format!("{:?}", cst);
 
     quote! {println!("{}", #debug); }.into()
 }
