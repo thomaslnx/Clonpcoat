@@ -16,3 +16,7 @@ unsafe_code = "deny"
 clonpcoat = { path = "crates/clonpcoat" }
 clonpcoat-macro = { path = "crates/clonpcoat-macro" }
 clonpcoat-view = { path = "crates/clonpcoat-view" }
+
+proc-macro2 = "1.0.107"
+quote = "1.0.47"
+syn = "3.0.6"
