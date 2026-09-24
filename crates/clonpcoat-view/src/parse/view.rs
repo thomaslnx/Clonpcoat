@@ -12,7 +12,7 @@ impl Parse for View {
             nodes: {
                 let mut children = Vec::new();
                 while !input.is_empty() {
-                    children.push(input.parser()?)
+                    children.push(input.parse()?)
                 }
                 children
             },

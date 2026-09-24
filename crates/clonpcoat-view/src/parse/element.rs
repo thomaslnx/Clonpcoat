@@ -1,8 +1,12 @@
-use syn::{Ident, braced, parse::{Parse, ParseStream},};
+use syn::{
+    braced,
+    parse::{Parse, ParseStream},
+    Ident,
+};
 
-use crate::parse::{Attributes, ParseOption};
+use crate::parse::{Attributes, Node, ParseOption};
 
-pub struc Element {
+pub struct Element {
     name: Ident,
     attributes: Attributes,
     body: ElementBody,
@@ -26,7 +30,12 @@ impl ParseOption for Element {
 
 pub struct ElementBody {
     _brace: syn::token::Brace,
-    children: Vec<Element>,
+    children: Vec<Node>, // <--------|
+                         // children: Vec<Element>, -------|
+                         // For compilation reasons this line above was commented and replaced
+                         // by the
+                         // children: Vec<Node>
+                         // #### Get dive into later to understand better ####
 }
 
 impl Parse for ElementBody {

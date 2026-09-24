@@ -19,4 +19,4 @@ clonpcoat-view = { path = "crates/clonpcoat-view" }
 
 proc-macro2 = "1.0.107"
 quote = "1.0.47"
-syn = "3.0.6"
+syn = { version = "3.0.6", features = ["parsing"] }
