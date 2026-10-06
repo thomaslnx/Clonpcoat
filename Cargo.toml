@@ -2,6 +2,7 @@
 resolver="2"
 members = [
   "crates/clonpcoat",
+  "crates/clonpcoat-dom",
   "crates/clonpcoat-macro",
   "crates/clonpcoat-view",
 
@@ -14,6 +15,7 @@ unsafe_code = "deny"
 [workspace.dependencies]
 # Clonpcoat crates
 clonpcoat = { path = "crates/clonpcoat" }
+clonpcoat-dom = { path = "crates/clonpcoat-dom"}
 clonpcoat-macro = { path = "crates/clonpcoat-macro" }
 clonpcoat-view = { path = "crates/clonpcoat-view" }
 

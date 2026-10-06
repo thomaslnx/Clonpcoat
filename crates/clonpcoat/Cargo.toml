@@ -3,8 +3,13 @@ name = "clonpcoat"
 version = "0.1.0"
 edition = "2024"
 
+[features]
+dom = ["dep:clonpcoat-dom"]
+
 [dependencies]
+clonpcoat-dom = { workspace = true, optional = true }
 clonpcoat-macro.workspace = true
+clonpcoat-view.workspace = true
 
 [lints]
 workspace = true

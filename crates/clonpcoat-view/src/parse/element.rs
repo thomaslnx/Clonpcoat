@@ -1,3 +1,6 @@
+use proc_macro2::TokenStream;
+use quote::{quote, ToTokens};
+
 use syn::{
     braced,
     parse::{Parse, ParseStream},
@@ -28,14 +31,22 @@ impl ParseOption for Element {
     }
 }
 
+impl ToTokens for Element {
+    fn to_tokens(&self, tokens: &mut TokenStream) {
+        let name = &self.name.to_string();
+        let attributes = &self.attributes;
+        let body = &self.body;
+
+        quote! {
+            ::clonpcoat::view::Element::new(#name.into(), #attributes, #body)
+        }
+        .to_tokens(tokens);
+    }
+}
+
 pub struct ElementBody {
     _brace: syn::token::Brace,
-    children: Vec<Node>, // <--------|
-                         // children: Vec<Element>, -------|
-                         // For compilation reasons this line above was commented and replaced
-                         // by the
-                         // children: Vec<Node>
-                         // #### Get dive into later to understand better ####
+    children: Vec<Node>,
 }
 
 impl Parse for ElementBody {
@@ -51,5 +62,16 @@ impl Parse for ElementBody {
                 children
             },
         })
+    }
+}
+
+impl ToTokens for ElementBody {
+    fn to_tokens(&self, tokens: &mut TokenStream) {
+        let children = &self.children;
+
+        quote! {
+            vec![#(#children),*]
+        }
+        .to_tokens(tokens);
     }
 }

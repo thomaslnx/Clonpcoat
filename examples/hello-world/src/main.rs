@@ -1,10 +1,14 @@
 fn main() {
-    clonpcoat::view! {
+    let rendered = clonpcoat::dom::render(&clonpcoat::view! {
         html {
             head {
-                title { "pip" }
+                title { "hello world" }
+            }
+            body {
+                "hi"
+                b { "carl" }
             }
         }
-    }
-    println!("Hello, world!");
+    });
+    println!("{}", rendered);
 }
