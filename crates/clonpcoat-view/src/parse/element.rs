@@ -1,10 +1,9 @@
 use proc_macro2::TokenStream;
-use quote::{quote, ToTokens};
+use quote::{ToTokens, quote};
 
 use syn::{
-    braced,
+    Ident, braced,
     parse::{Parse, ParseStream},
-    Ident,
 };
 
 use crate::parse::{Attributes, Node, ParseOption};
