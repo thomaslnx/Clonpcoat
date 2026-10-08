@@ -25,7 +25,7 @@ fn my_button(button_attrs: clonpcoat::dom::button::Attrs) {
 }
 
 #[component]
-async fn events() -> Result<Html, anyhow::Error> {
+async fn events() -> Result<Html, clonpcoat::Error> {
     let user = require_auth().await?;
 
     let db = use_db();
