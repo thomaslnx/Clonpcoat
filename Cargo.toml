@@ -3,6 +3,8 @@ resolver="2"
 members = [
   "crates/clonpcoat",
   "crates/clonpcoat-dom",
+  "crates/clonpcoat-axum",
+  "crates/clonpcoat-cli",
   "crates/clonpcoat-macro",
   "crates/clonpcoat-view",
 

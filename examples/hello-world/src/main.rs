@@ -1,3 +1,5 @@
+use clonpcoat::view::View;
+
 fn main() {
     let rendered = clonpcoat::dom::render(&clonpcoat::view! {
         html {
@@ -6,7 +8,7 @@ fn main() {
             }
             body {
                 "hi"
-                b { "carl" }
+                b class="cool" { "carl" }
             }
         }
     });
