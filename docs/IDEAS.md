@@ -2,8 +2,10 @@
 use clonpcoat::{component, html, Router};
 
 #[component]
-fn my_button() {
-
+fn my_button(button_attrs: clonpcoat::dom::button::Attrs) {
+    html! {
+        button {..button_attrs} class={button_props.class + " button"}
+    }
 }
 
 #[component]
@@ -31,24 +33,33 @@ async fn events() -> Html {
 #[layout]
 async fn nav(children: Html) -> Html {
     html! {
-        div {
-            nav {
-                // Type-safe href somehow based on the components?
-                a href={events} { "Events" }
-                a href="/submissions" { "Submissions" }
+        html {
+            head {
+                title { "Clonpcoat demo app" }
 
-                if use_signed_in().await {
-                    // Inline API handlers?
-                    (my_button) onclick={async || {
-                        delete_session().await;
-                        return redirect(sign_in);
-                    }} {
-                        "Sign out"
+                (clonpcoat::script::htmx)
+                (clonpcoat::script::alpinejs)
+            }
+            body {
+                nav {
+                    // Type-safe href somehow based on the components?
+
+                    a href={events} { "Events" }
+                    a href="/submissions" { "Submissions" }
+
+                    if use_signed_in().await {
+                        // Inline API handlers?
+                        (my_button) onclick={async || {
+                            delete_session().await;
+                            return redirect(sign_in);
+                        }} {
+                            "Sign out"
+                        }
                     }
                 }
-            }
-            main {
-                (children)
+                main {
+                    (children)
+                }
             }
         }
     }
