@@ -1,5 +1,5 @@
 ```rust
-use topcoat::{component, html, Router};
+use clonpcoat::{component, html, Router};
 
 #[component]
 fn my_button() {
@@ -63,6 +63,6 @@ async fn main() {
     // or
     let router = Router::file();
 
-    topcoat::serve(router).await;
+    clonpcoat::serve(router).await;
 }
 ```
