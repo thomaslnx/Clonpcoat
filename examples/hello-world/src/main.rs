@@ -1,7 +1,7 @@
 use clonpcoat::view::View;
 
 fn main() {
-    let rendered = clonpcoat::dom::render(&clonpcoat::view! {
+    let rendered = clonpcoat::view! {
         html {
             head {
                 title { "hello world" }
@@ -11,6 +11,6 @@ fn main() {
                 b class="cool" { "carl" }
             }
         }
-    });
+    };
     println!("{}", rendered);
 }

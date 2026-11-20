@@ -13,7 +13,7 @@ pub struct ClonpcoatCli {
 #[derive(Subcommand)]
 enum Command {
     /// Format clonpcoat `view!` macros
-    Fmt(fmt::DevCommand),
+    Fmt(fmt::FmtCommand),
 
     /// Start a development server
     Dev(dev::DevCommand),
