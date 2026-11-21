@@ -1,4 +1,4 @@
-use clonpcoat_view::View;
+use clonpcoat_view::ast::View;
 use proc_macro::TokenStream;
 use quote::quote;
 
