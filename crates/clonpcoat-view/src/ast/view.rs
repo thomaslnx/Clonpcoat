@@ -85,7 +85,7 @@ impl ToTokens for ViewWriter {
 
         // Optimized path: The view has no dynamic content. We can construct it as a &'static str.
         if self.exprs.is_empty() {
-            quote! { ::clopcoat::view::View::new(#static_segment) }.to_tokens(tokens);
+            quote! { ::clonpcoat::view::View::new(#static_segment) }.to_tokens(tokens);
             return;
         }
 
