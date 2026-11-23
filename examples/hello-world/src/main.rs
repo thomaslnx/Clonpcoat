@@ -1,14 +1,21 @@
 fn main() {
-    let rendered = clonpcoat::view! {
+    let dynamic = if 5 > 6 {
+        clonpcoat::view! { "hi" }
+    } else {
+        clonpcoat::view! { "bye" }
+    };
+
+    let content = clonpcoat::view! {
         html {
             head {
                 title { "hello world" }
             }
             body {
-                "hi"
-                b class="cool" { "carl & friends" }
+                (dynamic)
+                " "
+                b class="cool" { "carl & friends"}
             }
         }
     };
-    println!("{}", rendered);
+    println!("{}", content);
 }
